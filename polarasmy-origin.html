@@ -170,15 +170,15 @@ nav::before { content:'';position:absolute;inset:0;background:linear-gradient(to
 .hero-play {
   position:relative;
   width:82px;height:82px;border-radius:50%;
-  border:1px solid rgba(200,169,110,.78);
+  border:1px solid #8A6A3B;
   display:flex;align-items:center;justify-content:center;
   background:transparent;backdrop-filter:none;
-  box-shadow:0 0 22px rgba(200,169,110,.15),inset 0 0 18px rgba(200,169,110,.04);
+  box-shadow:0 0 30px rgba(200,169,110,.34),0 0 58px rgba(138,106,59,.18),inset 0 0 18px rgba(200,169,110,.06);
   transition:border-color .25s,background .25s,box-shadow .25s;
 }
 .hero-play:hover { border-color:#f0c979;background:transparent;box-shadow:0 0 34px rgba(240,201,121,.46),inset 0 0 20px rgba(200,169,110,.08); }
 .hero-play svg { width:19px;height:22px;margin-left:4px;fill:#f4efe5;position:relative;z-index:1; }
-.hero-play::before { content:'';position:absolute;inset:-8px;border-radius:50%;border:1px solid rgba(200,169,110,.12); }
+.hero-play::before { content:none; }
 .hero-play::after { content:'';position:absolute;inset:-4px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,transparent 220deg,rgba(240,201,121,.18) 260deg,#ffd98a 320deg,#fff1bd 344deg,transparent 360deg);opacity:0;-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 5px),#000 calc(100% - 4px));mask:radial-gradient(farthest-side,transparent calc(100% - 5px),#000 calc(100% - 4px));filter:drop-shadow(0 0 8px rgba(255,217,138,.7));pointer-events:none; }
 .hero-play:hover::after { opacity:1;animation:reelSpin 1.15s linear infinite; }
 .hero-play-label {
