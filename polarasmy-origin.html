@@ -158,18 +158,18 @@ nav::before { content:'';position:absolute;inset:0;background:linear-gradient(to
 /* Stats panel */
 .hero-stats {
   --timeline-x:.45rem;
-  position:absolute;top:50%;right:clamp(2.5rem,10vw,10rem);
+  position:absolute;top:50%;right:calc(clamp(2.5rem,10vw,10rem) - 120px);
   transform:translateY(-50%);
   width:min(230px,28vw);
   padding:.35rem 0 .35rem 2.1rem;
   display:flex;flex-direction:column;justify-content:center;
-  gap:1.55rem;z-index:4;
+  gap:2.65rem;z-index:4;
   opacity:0;animation:fade-in .8s 2.7s ease forwards;
 }
 .hero-stats::before {
   content:'';position:absolute;left:var(--timeline-x);top:-.9rem;bottom:-.9rem;width:1px;
   transform:translateX(-50%);
-  background:linear-gradient(to bottom,rgba(200,160,80,.05),rgba(200,160,80,.65) 16%,rgba(200,160,80,.5) 82%,rgba(200,160,80,.05));
+  background:linear-gradient(to bottom,rgba(200,160,80,.05),rgba(200,160,80,.65) 16%,rgba(200, 160, 80, 0.327) 82%,rgba(200,160,80,.05));
   box-shadow:0 0 16px rgba(200,160,80,.18);
 }
 @keyframes fade-in { to { opacity:1; } }
@@ -180,22 +180,19 @@ nav::before { content:'';position:absolute;inset:0;background:linear-gradient(to
 }
 .hs-item::before {
   content:'';position:absolute;left:calc(var(--timeline-x) - 2.1rem);top:.42rem;
-  width:4px;height:4px;border-radius:50%;
+  width:5px;height:5px;border-radius:50%;
   transform:translateX(-50%);
   background:var(--gold);
-  box-shadow:0 0 10px rgba(200,160,80,.8),0 0 22px rgba(200,160,80,.35);
-}
-.hs-item:first-child::before {
-  width:5px;height:5px;top:.22rem;
   box-shadow:0 0 8px 2px rgba(200,160,80,.9),0 0 24px 5px rgba(200,160,80,.32);
 }
 .hs-val {
-  font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:500;
+  font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:600;
   letter-spacing:.12em;text-transform:uppercase;color:var(--cream);
 }
 .hs-key {
-  font-family:'JetBrains Mono',monospace;font-size:.52rem;
-  letter-spacing:.28em;text-transform:uppercase;color:rgba(238,235,228,.54);
+  font-family:'JetBrains Mono',monospace;font-size:.60rem;
+  font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:rgba(238,235,228,.54);
 }
 
 @keyframes rise { from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)} }
@@ -219,7 +216,7 @@ nav::before { content:'';position:absolute;inset:0;background:linear-gradient(to
     --timeline-x:.35rem;
     top:6.5rem;right:auto;left:var(--pad);
     width:min(220px,70vw);transform:none;
-    gap:1.15rem;padding-left:1.8rem;
+    gap:1.55rem;padding-left:1.8rem;
   }
   .hs-item::before { left:calc(var(--timeline-x) - 1.8rem); }
   .hs-val { font-size:.76rem; }
@@ -470,7 +467,7 @@ footer { padding:2.2rem var(--pad);display:flex;align-items:center;justify-conte
 
   <div class="hero-stats">
     <div class="hs-item"><div class="hs-val">Apple TV+</div><div class="hs-key">CREDITED</div></div>
-    <div class="hs-item"><div class="hs-val">7+ Years</div><div class="hs-key">EXPERIENCE</div></div>
+    <div class="hs-item"><div class="hs-val">7+</div><div class="hs-key">YEARS EXPERIENCE</div></div>
     <div class="hs-item"><div class="hs-val">3</div><div class="hs-key">CONTINENTS</div></div>
     <div class="hs-item"><div class="hs-val">Global</div><div class="hs-key">PRODUCTIONS</div></div>
     <div class="hs-item"><div class="hs-val">Luxury</div><div class="hs-key">CAMPAIGNS</div></div>
