@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pola Rasmy — Filmmaker / Director / Visual Strategist</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Barlow+Condensed:wght@300;400;500;600&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --gold: #c8a96e;
+    --gold-dim: #8a7248;
+    --bg: #080807;
+    --bg2: #0f0e0c;
+    --bg3: #141310;
+    --text: #e8e0d0;
+    --text-muted: #7a7060;
+    --text-dim: #4a4438;
+    --border: rgba(200,169,110,0.15);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    position: fixed; width: 8px; height: 8px;
+    background: var(--gold); border-radius: 50%;
+    pointer-events: none; z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s, width 0.3s, height 0.3s;
+  }
+  .cursor-ring {
+    position: fixed; width: 32px; height: 32px;
+    border: 1px solid rgba(200,169,110,0.5); border-radius: 50%;
+    pointer-events: none; z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease-out, width 0.3s, height 0.3s, opacity 0.3s;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 28px 48px;
+    mix-blend-mode: normal;
+  }
+  nav::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(8,8,7,0.9) 0%, transparent 100%);
+    pointer-events: none;
+  }
+  .nav-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px; letter-spacing: 0.25em;
+    color: var(--text); text-decoration: none;
+    position: relative; z-index: 1;
+  }
+  .nav-links {
+    display: flex; gap: 40px; list-style: none;
+    position: relative; z-index: 1;
+  }
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; letter-spacing: 0.2em;
+    color: var(--text-muted); text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-menu {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; letter-spacing: 0.2em;
+    color: var(--text-muted); text-transform: uppercase;
+    position: relative; z-index: 1;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .nav-menu span { color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    position: relative; height: 100vh; min-height: 700px;
+    display: flex; align-items: flex-end;
+    padding: 0 48px 80px;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 60% 30%, rgba(40,32,18,0.6) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 30% 60%, rgba(200,169,110,0.04) 0%, transparent 60%),
+      linear-gradient(160deg, #0f0d09 0%, #080807 40%, #0a0908 100%);
+  }
+  .hero-grain {
+    position: absolute; inset: 0; z-index: 1; opacity: 0.06;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+  /* Spotlight beam */
+  .hero-spotlight {
+    position: absolute; top: -10%; right: 15%; z-index: 2;
+    width: 3px; height: 75%;
+    background: linear-gradient(to bottom, rgba(200,169,110,0.6) 0%, rgba(200,169,110,0.1) 60%, transparent 100%);
+    transform: rotate(8deg);
+    transform-origin: top center;
+    filter: blur(1px);
+  }
+  .hero-spotlight::after {
+    content: '';
+    position: absolute; top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(200,169,110,0.9);
+    box-shadow: 0 0 20px 8px rgba(200,169,110,0.3);
+  }
+  /* Silhouette */
+  .hero-silhouette {
+    position: absolute; bottom: 0; left: 50%; transform: translateX(-20%);
+    z-index: 3; width: 420px; height: 85%;
+    background: linear-gradient(to bottom,
+      transparent 0%,
+      rgba(15,12,8,0.4) 30%,
+      rgba(8,8,7,0.95) 85%,
+      var(--bg) 100%);
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 420 700'%3E%3Cellipse cx='210' cy='350' rx='200' ry='340'/%3E%3C/svg%3E");
+  }
+
+  .hero-content { position: relative; z-index: 10; }
+  .hero-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; letter-spacing: 0.3em;
+    color: var(--gold); text-transform: uppercase;
+    margin-bottom: 20px;
+    opacity: 0; animation: fadeUp 1s 0.3s forwards;
+  }
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(80px, 12vw, 160px);
+    font-weight: 300; line-height: 0.88;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    opacity: 0; animation: fadeUp 1s 0.5s forwards;
+  }
+  .hero-sub {
+    margin-top: 32px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px; letter-spacing: 0.15em;
+    color: var(--text-muted); text-transform: uppercase;
+    opacity: 0; animation: fadeUp 1s 0.7s forwards;
+  }
+  .hero-tagline {
+    margin-top: 16px;
+    font-size: 14px; font-weight: 300;
+    color: var(--text-muted); max-width: 280px;
+    line-height: 1.6;
+    opacity: 0; animation: fadeUp 1s 0.9s forwards;
+  }
+  .hero-tags {
+    margin-top: 28px;
+    display: flex; gap: 16px; flex-wrap: wrap;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px; letter-spacing: 0.2em; color: var(--text-dim);
+    text-transform: uppercase;
+    opacity: 0; animation: fadeUp 1s 1.1s forwards;
+  }
+  .hero-tags span { color: var(--gold-dim); }
+
+  /* Play reel */
+  .hero-reel {
+    position: absolute; z-index: 10;
+    left: 50%; top: 50%; transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; align-items: center; gap: 14px;
+    opacity: 0; animation: fadeIn 1.5s 1.2s forwards;
+    cursor: none;
+  }
+  .reel-btn {
+    width: 64px; height: 64px; border-radius: 50%;
+    border: 1px solid rgba(200,169,110,0.4);
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(200,169,110,0.05);
+    transition: all 0.4s;
+    position: relative;
+  }
+  .reel-btn::before {
+    content: '';
+    position: absolute; inset: -8px; border-radius: 50%;
+    border: 1px solid rgba(200,169,110,0.1);
+    animation: pulse 2.5s infinite;
+  }
+  .reel-btn svg { fill: var(--gold); width: 18px; margin-left: 3px; }
+  .reel-btn:hover { background: rgba(200,169,110,0.12); transform: scale(1.05); }
+  .reel-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px; letter-spacing: 0.3em; color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  /* Hero stats */
+  .hero-stats {
+    position: absolute; right: 48px; top: 50%; transform: translateY(-40%);
+    z-index: 10; display: flex; flex-direction: column; gap: 20px;
+    opacity: 0; animation: fadeIn 1s 1s forwards;
+  }
+  .stat {
+    border-left: 1px solid var(--border); padding-left: 14px;
+  }
+  .stat-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); display: flex; align-items: center; gap: 6px;
+  }
+  .stat-label::before { content: '◆'; font-size: 6px; }
+  .stat-sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--text-dim); margin-top: 2px;
+  }
+
+  /* Scroll indicator */
+  .scroll-indicator {
+    position: absolute; bottom: 40px; right: 48px; z-index: 10;
+    display: flex; align-items: center; gap: 12px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px; letter-spacing: 0.3em; color: var(--text-dim);
+    text-transform: uppercase;
+    opacity: 0; animation: fadeIn 1s 1.5s forwards;
+  }
+  .scroll-line {
+    width: 40px; height: 1px; background: var(--border);
+    position: relative; overflow: hidden;
+  }
+  .scroll-line::after {
+    content: ''; position: absolute; inset: 0;
+    background: var(--gold);
+    animation: scrollLine 2s infinite;
+  }
+
+  /* SECTION 02 — FEATURED */
+  .section { position: relative; }
+
+  .featured {
+    display: grid; grid-template-columns: 1fr 1fr;
+    min-height: 80vh; overflow: hidden;
+  }
+  .featured-left {
+    background: var(--bg2);
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 64px;
+    border-right: 1px solid var(--border);
+    position: relative;
+  }
+  .featured-left::before {
+    content: '02';
+    position: absolute; left: 48px; top: 48px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; letter-spacing: 0.2em; color: var(--text-dim);
+  }
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 32px;
+  }
+  .featured-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 6vw, 88px);
+    font-weight: 300; line-height: 0.9;
+    letter-spacing: -0.01em;
+    color: var(--text);
+  }
+  .featured-meta {
+    margin-top: 28px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; letter-spacing: 0.2em; color: var(--text-dim);
+    text-transform: uppercase; display: flex; gap: 20px;
+  }
+  .featured-meta span { color: var(--gold-dim); }
+  .btn-outline {
+    margin-top: 40px;
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 14px 24px;
+    border: 1px solid var(--border);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--text-muted); text-decoration: none;
+    transition: all 0.4s; width: fit-content;
+  }
+  .btn-outline:hover {
+    border-color: var(--gold); color: var(--gold);
+    background: rgba(200,169,110,0.04);
+  }
+  .btn-arrow { font-size: 14px; transition: transform 0.3s; }
+  .btn-outline:hover .btn-arrow { transform: translateX(4px); }
+
+  .featured-right {
+    position: relative; overflow: hidden;
+    background: #0c0b09;
+  }
+  .featured-img {
+    width: 100%; height: 100%;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 70%, rgba(30,22,10,0.8) 0%, transparent 70%),
+      linear-gradient(180deg, #1a1408 0%, #0a0905 50%, #060504 100%);
+    display: flex; align-items: flex-end; justify-content: center;
+    padding-bottom: 40px;
+  }
+  /* Pyramids silhouette */
+  .pyramids {
+    width: 100%; height: 200px;
+    position: absolute; bottom: 0;
+    background: linear-gradient(to top, #080807 0%, transparent 100%);
+  }
+  .pyramids svg { width: 100%; height: 100%; opacity: 0.4; }
+  .img-counter {
+    position: absolute; bottom: 40px; right: 32px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; letter-spacing: 0.1em; color: var(--text-dim);
+  }
+  .img-counter span { color: var(--gold-dim); }
+
+  /* Glow orb */
+  .glow-orb {
+    position: absolute; border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,150,40,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* SECTION 03 — WORK */
+  .work {
+    padding: 100px 48px;
+    background: var(--bg);
+  }
+  .work-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 48px;
+    border-bottom: 1px solid var(--border); padding-bottom: 24px;
+  }
+  .view-all {
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--text-dim); text-decoration: none; transition: color 0.3s;
+  }
+  .view-all:hover { color: var(--gold); }
+  .view-all-circle {
+    width: 28px; height: 28px; border-radius: 50%;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; transition: all 0.3s;
+  }
+  .view-all:hover .view-all-circle { border-color: var(--gold); color: var(--gold); }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+  }
+  .work-card {
+    position: relative; overflow: hidden;
+    aspect-ratio: 3/4; cursor: none;
+    background: var(--bg3);
+  }
+  .work-card-bg {
+    position: absolute; inset: 0;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .work-card:hover .work-card-bg { transform: scale(1.06); }
+  .work-card-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(8,8,7,0.95) 0%, rgba(8,8,7,0.2) 50%, transparent 100%);
+    transition: opacity 0.4s;
+  }
+  .work-card:hover .work-card-overlay { opacity: 0.7; }
+  .work-card-info {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 20px 16px;
+  }
+  .work-card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text); font-weight: 500;
+  }
+  .work-card-type {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--text-dim); margin-top: 3px;
+  }
+  .work-card-year {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px; letter-spacing: 0.15em;
+    color: var(--gold-dim); margin-top: 1px;
+  }
+
+  /* Work card colors */
+  .wc1 { background: radial-gradient(ellipse at 30% 60%, #1a0a05 0%, #0a0807 100%); }
+  .wc2 { background: radial-gradient(ellipse at 70% 40%, #080c12 0%, #080807 100%); }
+  .wc3 { background: radial-gradient(ellipse at 50% 50%, #0f080a 0%, #080807 100%); }
+  .wc4 { background: radial-gradient(ellipse at 40% 70%, #0a0c0f 0%, #080807 100%); }
+  .wc5 { background: radial-gradient(ellipse at 60% 30%, #0f0d08 0%, #080807 100%); }
+
+  /* Car silhouette for Porsche */
+  .car-glow {
+    position: absolute; bottom: 25%; left: 10%; right: 10%; height: 30%;
+    background: radial-gradient(ellipse, rgba(200,60,20,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  /* SECTION 04 — ABOUT */
+  .about {
+    display: grid; grid-template-columns: 1fr 1fr;
+    min-height: 85vh; overflow: hidden;
+  }
+  .about-left {
+    padding: 100px 64px;
+    background: var(--bg2);
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative;
+    border-right: 1px solid var(--border);
+  }
+  .about-left::before {
+    content: '04';
+    position: absolute; left: 48px; top: 48px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; letter-spacing: 0.2em; color: var(--text-dim);
+  }
+  .about-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 5.5vw, 80px);
+    font-weight: 300; line-height: 0.88;
+    color: var(--text); margin-bottom: 40px;
+  }
+  .about-text {
+    font-size: 14px; line-height: 1.8;
+    color: var(--text-muted); max-width: 340px;
+  }
+  .about-text p { margin-bottom: 16px; }
+  .about-text em {
+    font-style: italic; color: var(--text);
+    font-family: 'Cormorant Garamond', serif; font-size: 16px;
+  }
+
+  .about-right {
+    display: grid; grid-template-columns: 1fr 1fr;
+    background: var(--bg);
+  }
+  .stat-block {
+    padding: 48px 40px;
+    border-bottom: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    min-height: 160px; position: relative; overflow: hidden;
+    transition: background 0.4s;
+  }
+  .stat-block:hover { background: rgba(200,169,110,0.02); }
+  .stat-block:nth-child(even) { border-right: none; }
+  .stat-block:nth-last-child(-n+2) { border-bottom: none; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px; font-weight: 300;
+    color: var(--text); line-height: 1;
+  }
+  .stat-num sup {
+    font-size: 24px; color: var(--gold);
+    vertical-align: super;
+  }
+  .stat-desc {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--text-dim); margin-top: 8px;
+  }
+
+  /* SECTION 05 — GLOBAL */
+  .global {
+    padding: 100px 48px;
+    background: var(--bg2);
+    position: relative;
+  }
+  .global::before {
+    content: '06';
+    position: absolute; left: 48px; top: 48px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; letter-spacing: 0.2em; color: var(--text-dim);
+  }
+  .global-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px; margin-top: 48px;
+  }
+  .city-card {
+    position: relative; height: 320px; overflow: hidden;
+    cursor: none; background: var(--bg3);
+    transition: flex 0.4s;
+  }
+  .city-bg {
+    position: absolute; inset: 0;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .city-card:hover .city-bg { transform: scale(1.08); }
+  .city-card-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(8,8,7,0.92) 0%, rgba(8,8,7,0.3) 60%, transparent 100%);
+  }
+  .city-info {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 28px 28px;
+    display: flex; justify-content: space-between; align-items: flex-end;
+  }
+  .city-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px; font-weight: 300; color: var(--text);
+    line-height: 1;
+  }
+  .city-country {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-top: 4px;
+  }
+  .city-enter {
+    display: flex; align-items: center; gap: 8px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--text-dim);
+  }
+  .city-enter-circle {
+    width: 24px; height: 24px; border-radius: 50%;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px;
+    transition: all 0.3s;
+  }
+  .city-card:hover .city-enter-circle {
+    border-color: var(--gold); color: var(--gold);
+  }
+
+  /* City backgrounds */
+  .cairo-bg {
+    background: radial-gradient(ellipse 80% 60% at 50% 80%, rgba(60,40,10,0.6) 0%, transparent 70%),
+                linear-gradient(180deg, #0f0c06 0%, #080807 100%);
+  }
+  .shanghai-bg {
+    background: radial-gradient(ellipse 80% 60% at 50% 60%, rgba(10,25,50,0.5) 0%, transparent 70%),
+                linear-gradient(180deg, #080c12 0%, #080807 100%);
+  }
+  .toronto-bg {
+    background: radial-gradient(ellipse 80% 60% at 50% 60%, rgba(10,20,35,0.5) 0%, transparent 70%),
+                linear-gradient(180deg, #090b0f 0%, #080807 100%);
+  }
+
+  /* Skyline SVGs */
+  .skyline { position: absolute; bottom: 0; width: 100%; opacity: 0.25; }
+
+  /* SECTION 06 — DISCIPLINES */
+  .disciplines-contact {
+    display: grid; grid-template-columns: 1fr 1fr;
+    min-height: 70vh;
+  }
+  .disciplines {
+    padding: 80px 64px;
+    background: var(--bg);
+    border-right: 1px solid var(--border);
+  }
+  .discipline-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s; cursor: none;
+  }
+  .discipline-item:hover { padding-left: 8px; }
+  .discipline-item:hover .disc-plus { color: var(--gold); }
+  .disc-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px; letter-spacing: 0.1em; color: var(--text-dim);
+    width: 24px;
+  }
+  .disc-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--text-muted); flex: 1; margin-left: 16px;
+    transition: color 0.3s;
+  }
+  .discipline-item:hover .disc-name { color: var(--text); }
+  .disc-plus { color: var(--text-dim); transition: color 0.3s; }
+
+  /* CONTACT */
+  .contact {
+    padding: 80px 64px;
+    background: var(--bg2);
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .contact-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 58px);
+    font-weight: 300; line-height: 1.05;
+    color: var(--text); margin-bottom: 32px;
+  }
+  .contact-title em { font-style: italic; color: var(--gold); }
+  .contact-email {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--text-dim); margin-bottom: 8px;
+  }
+  .contact-link {
+    font-size: 14px; color: var(--text-muted);
+    text-decoration: none; transition: color 0.3s;
+    letter-spacing: 0.05em;
+  }
+  .contact-link:hover { color: var(--gold); }
+  .contact-socials {
+    display: flex; gap: 24px; margin-top: 40px;
+  }
+  .contact-social {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--text-dim); text-decoration: none;
+    transition: color 0.3s;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .contact-social::before {
+    content: '↗'; color: var(--gold-dim);
+    transition: color 0.3s;
+  }
+  .contact-social:hover { color: var(--text); }
+  .contact-social:hover::before { color: var(--gold); }
+
+  /* FOOTER */
+  footer {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 28px 48px;
+    border-top: 1px solid var(--border);
+    background: var(--bg);
+  }
+  footer span {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px; letter-spacing: 0.2em; color: var(--text-dim);
+    text-transform: uppercase;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.4); opacity: 0; }
+  }
+  @keyframes scrollLine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  /* Reveal on scroll */
+  .reveal {
+    opacity: 0; transform: translateY(40px);
+    transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">POLA RASMY</a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#disciplines">Disciplines</a></li>
+    <li><a href="#journal">Journal</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-menu">Menu <span>⋮</span></div>
+</nav>
+
+<!-- SECTION 01 — HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-spotlight"></div>
+
+  <!-- Ambient glows -->
+  <div class="glow-orb" style="width:500px;height:500px;top:10%;right:10%;opacity:0.4;"></div>
+  <div class="glow-orb" style="width:300px;height:300px;bottom:20%;left:35%;opacity:0.2;"></div>
+
+  <div class="hero-content">
+    <div class="hero-label">Filmmaker / Director / Visual Strategist</div>
+    <div class="hero-name">POLA<br>RASMY</div>
+    <div class="hero-sub">Apple TV+ · Cairo · China · Canada · Luxury Campaigns</div>
+    <div class="hero-tagline">Bridging Egypt, China, and the world<br>through cinematic storytelling.</div>
+    <div class="hero-tags">
+      <span>◆</span> Apple TV+ · <span>◆</span> Cairo · <span>◆</span> China · <span>◆</span> Canada
+      <br style="flex-basis:100%">
+      Luxury Campaigns — International Productions
+    </div>
+  </div>
+
+  <!-- Play reel -->
+  <div class="hero-reel">
+    <div class="reel-btn">
+      <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+    </div>
+    <div class="reel-label">Play Reel</div>
+  </div>
+
+  <!-- Stats -->
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-label">Apple TV+</div>
+      <div class="stat-sub">Credited</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">7+</div>
+      <div class="stat-sub">Years Experience</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">3</div>
+      <div class="stat-sub">Continents</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Global</div>
+      <div class="stat-sub">Productions</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Luxury</div>
+      <div class="stat-sub">Campaigns</div>
+    </div>
+  </div>
+
+  <!-- Scroll -->
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    Scroll to begin
+  </div>
+</section>
+
+<!-- SECTION 02 — FEATURED CREDIT -->
+<section class="section featured" id="featured">
+  <div class="featured-left">
+    <div class="section-label reveal">Featured Credit</div>
+    <div class="featured-title reveal reveal-delay-1">FOUNTAIN<br>OF YOUTH</div>
+    <div class="featured-meta reveal reveal-delay-2">
+      <span>Apple TV+</span> · 2025
+    </div>
+    <a href="#" class="btn-outline reveal reveal-delay-3">
+      Explore Project <span class="btn-arrow">→</span>
+    </a>
+  </div>
+  <div class="featured-right">
+    <div class="featured-img">
+      <!-- Cinematic scene -->
+      <div class="glow-orb" style="width:300px;height:200px;bottom:30%;left:10%;opacity:0.6;background:radial-gradient(circle,rgba(200,140,50,0.12) 0%,transparent 70%);"></div>
+      <!-- Pyramids SVG -->
+      <div class="pyramids">
+        <svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <polygon points="400,20 200,200 600,200" fill="rgba(20,16,8,0.9)"/>
+          <polygon points="160,80 40,200 280,200" fill="rgba(15,12,6,0.85)"/>
+          <polygon points="640,90 520,200 760,200" fill="rgba(15,12,6,0.85)"/>
+          <!-- figures -->
+          <rect x="360" y="160" width="8" height="40" rx="2" fill="rgba(200,169,110,0.15)"/>
+          <rect x="390" y="165" width="8" height="35" rx="2" fill="rgba(200,169,110,0.12)"/>
+          <rect x="420" y="158" width="8" height="42" rx="2" fill="rgba(200,169,110,0.18)"/>
+          <!-- Glow sun -->
+          <circle cx="400" cy="85" r="12" fill="rgba(200,140,40,0.25)" filter="url(#glow)"/>
+          <defs>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="6" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+        </svg>
+      </div>
+    </div>
+    <div class="img-counter"><span>01</span> — 05</div>
+  </div>
+</section>
+
+<!-- SECTION 03 — SELECTED WORK -->
+<section class="section work" id="work">
+  <div class="work-header reveal">
+    <div class="section-label" style="margin-bottom:0">Selected Work</div>
+    <a href="#" class="view-all">
+      View All Work
+      <div class="view-all-circle">→</div>
+    </a>
+  </div>
+  <div class="work-grid">
+    <div class="work-card">
+      <div class="work-card-bg wc1">
+        <div class="car-glow"></div>
+      </div>
+      <div class="work-card-overlay"></div>
+      <div class="work-card-info">
+        <div class="work-card-title">Porsche</div>
+        <div class="work-card-type">Global Campaign</div>
+        <div class="work-card-year">2024</div>
+      </div>
+    </div>
+    <div class="work-card">
+      <div class="work-card-bg wc2"></div>
+      <div class="work-card-overlay"></div>
+      <div class="work-card-info">
+        <div class="work-card-title">Gentle Monster</div>
+        <div class="work-card-type">Digital Campaign</div>
+        <div class="work-card-year">2024</div>
+      </div>
+    </div>
+    <div class="work-card">
+      <div class="work-card-bg wc3"></div>
+      <div class="work-card-overlay"></div>
+      <div class="work-card-info">
+        <div class="work-card-title">Balenciaga</div>
+        <div class="work-card-type">Fashion Film</div>
+        <div class="work-card-year">2023</div>
+      </div>
+    </div>
+    <div class="work-card">
+      <div class="work-card-bg wc4"></div>
+      <div class="work-card-overlay"></div>
+      <div class="work-card-info">
+        <div class="work-card-title">Leica</div>
+        <div class="work-card-type">Cinematic Series</div>
+        <div class="work-card-year">2023</div>
+      </div>
+    </div>
+    <div class="work-card">
+      <div class="work-card-bg wc5"></div>
+      <div class="work-card-overlay"></div>
+      <div class="work-card-info">
+        <div class="work-card-title">Apple TV+</div>
+        <div class="work-card-type">Branded Content</div>
+        <div class="work-card-year">2023</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 04 — ABOUT -->
+<section class="section about" id="about">
+  <div class="about-left">
+    <div class="section-label reveal">About</div>
+    <div class="about-title reveal reveal-delay-1">BETWEEN<br>WORLDS.</div>
+    <div class="about-text reveal reveal-delay-2">
+      <p>I craft cinematic stories at the intersection of culture, luxury, and emotion.</p>
+      <p>My work lives between continents,<br>between disciplines. Between realities.</p>
+      <p><em>I believe stories travel.<br>I build worlds that stay.</em></p>
+    </div>
+  </div>
+  <div class="about-right">
+    <div class="stat-block reveal">
+      <div class="stat-num">7<sup>+</sup></div>
+      <div class="stat-desc">Years Experience</div>
+    </div>
+    <div class="stat-block reveal reveal-delay-1">
+      <div class="stat-num">40<sup>+</sup></div>
+      <div class="stat-desc">Projects Delivered</div>
+    </div>
+    <div class="stat-block reveal reveal-delay-2">
+      <div class="stat-num">12</div>
+      <div class="stat-desc">Industries Collaborated</div>
+    </div>
+    <div class="stat-block reveal reveal-delay-3">
+      <div class="stat-num">3</div>
+      <div class="stat-desc">Continents Based Between</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 05 — GLOBAL PRESENCE -->
+<section class="section global" id="global">
+  <div class="section-label reveal">Global Presence</div>
+  <div class="global-grid">
+    <div class="city-card">
+      <div class="city-bg cairo-bg">
+        <!-- pyramid mini -->
+        <svg style="position:absolute;bottom:0;width:100%;opacity:0.2" viewBox="0 0 400 120">
+          <polygon points="200,10 80,120 320,120" fill="#c8a96e"/>
+          <polygon points="80,50 10,120 150,120" fill="#a08040"/>
+          <polygon points="320,55 250,120 390,120" fill="#a08040"/>
+        </svg>
+      </div>
+      <div class="city-card-overlay"></div>
+      <div class="city-info">
+        <div>
+          <div class="city-name">Cairo</div>
+          <div class="city-country">Egypt</div>
+        </div>
+        <div class="city-enter">
+          Enter World
+          <div class="city-enter-circle">→</div>
+        </div>
+      </div>
+    </div>
+    <div class="city-card">
+      <div class="city-bg shanghai-bg">
+        <!-- shanghai skyline -->
+        <svg style="position:absolute;bottom:0;width:100%;opacity:0.15" viewBox="0 0 400 140" xmlns="http://www.w3.org/2000/svg">
+          <rect x="180" y="10" width="12" height="130" fill="#6ab0e0"/>
+          <polygon points="186,10 183,25 189,25" fill="#6ab0e0"/>
+          <rect x="140" y="40" width="20" height="100" fill="#5090c0"/>
+          <rect x="220" y="50" width="15" height="90" fill="#5090c0"/>
+          <rect x="100" y="60" width="18" height="80" fill="#4070a0"/>
+          <rect x="260" y="55" width="16" height="85" fill="#4070a0"/>
+          <rect x="60" y="75" width="20" height="65" fill="#305080"/>
+          <rect x="300" y="70" width="22" height="70" fill="#305080"/>
+        </svg>
+      </div>
+      <div class="city-card-overlay"></div>
+      <div class="city-info">
+        <div>
+          <div class="city-name">Shanghai</div>
+          <div class="city-country">China</div>
+        </div>
+        <div class="city-enter">
+          Enter World
+          <div class="city-enter-circle">→</div>
+        </div>
+      </div>
+    </div>
+    <div class="city-card">
+      <div class="city-bg toronto-bg">
+        <!-- CN tower -->
+        <svg style="position:absolute;bottom:0;width:100%;opacity:0.15" viewBox="0 0 400 160">
+          <rect x="196" y="5" width="8" height="155" fill="#90b0d0"/>
+          <ellipse cx="200" cy="80" rx="22" ry="12" fill="#7090b0"/>
+          <rect x="197" y="5" width="6" height="30" fill="#a0c0e0"/>
+          <rect x="160" y="90" width="25" height="70" fill="#5070a0"/>
+          <rect x="215" y="95" width="20" height="65" fill="#5070a0"/>
+          <rect x="120" y="100" width="18" height="60" fill="#405080"/>
+          <rect x="260" y="105" width="20" height="55" fill="#405080"/>
+        </svg>
+      </div>
+      <div class="city-card-overlay"></div>
+      <div class="city-info">
+        <div>
+          <div class="city-name">Toronto</div>
+          <div class="city-country">Canada</div>
+        </div>
+        <div class="city-enter">
+          Enter World
+          <div class="city-enter-circle">→</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 06 — DISCIPLINES + CONTACT -->
+<section class="disciplines-contact">
+  <div class="disciplines" id="disciplines">
+    <div class="section-label reveal" style="margin-bottom:36px">Disciplines</div>
+    <div class="discipline-item reveal">
+      <span class="disc-num">01</span>
+      <span class="disc-name">Cinematic Brand Films</span>
+      <span class="disc-plus">+</span>
+    </div>
+    <div class="discipline-item reveal reveal-delay-1">
+      <span class="disc-num">02</span>
+      <span class="disc-name">International Production</span>
+      <span class="disc-plus">+</span>
+    </div>
+    <div class="discipline-item reveal reveal-delay-2">
+      <span class="disc-num">03</span>
+      <span class="disc-name">Creative Direction</span>
+      <span class="disc-plus">+</span>
+    </div>
+    <div class="discipline-item reveal reveal-delay-3">
+      <span class="disc-num">04</span>
+      <span class="disc-name">Editorial Campaigns</span>
+      <span class="disc-plus">+</span>
+    </div>
+    <div class="discipline-item reveal reveal-delay-4">
+      <span class="disc-num">05</span>
+      <span class="disc-name">Luxury Event Documentation</span>
+      <span class="disc-plus">+</span>
+    </div>
+    <div class="discipline-item reveal">
+      <span class="disc-num">06</span>
+      <span class="disc-name">Visual Strategy</span>
+      <span class="disc-plus">+</span>
+    </div>
+  </div>
+
+  <div class="contact" id="contact">
+    <div class="section-label reveal">Let's Connect</div>
+    <div class="contact-title reveal reveal-delay-1">
+      LET'S BUILD<br>SOMETHING<br><em>UNFORGETTABLE.</em>
+    </div>
+    <div class="contact-email reveal reveal-delay-2">Direct Contact</div>
+    <a href="mailto:pola@polarasmy.com" class="contact-link reveal reveal-delay-2">
+      pola@polarasmy.com
+    </a>
+    <div class="contact-socials reveal reveal-delay-3">
+      <a href="#" class="contact-social">Instagram</a>
+      <a href="#" class="contact-social">Vimeo</a>
+      <a href="#" class="contact-social">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>Pola Rasmy</span>
+  <span>© 2025 All Rights Reserved</span>
+  <span>polarasmy.com</span>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+  });
+
+  function animateRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.15 });
+  reveals.forEach(r => observer.observe(r));
+
+  // Parallax on hero
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    const heroGrain = document.querySelector('.hero-grain');
+    if (heroGrain) heroGrain.style.transform = `translateY(${y * 0.3}px)`;
+    const spotlight = document.querySelector('.hero-spotlight');
+    if (spotlight) spotlight.style.transform = `rotate(${8 + y * 0.02}deg)`;
+  });
+</script>
+</body>
+</html>
