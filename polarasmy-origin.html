@@ -62,27 +62,16 @@ body.h #cur2 { width:48px;height:48px;border-color:rgba(200,160,80,.45); }
 nav {
   position:fixed;top:0;left:0;right:0;z-index:500;
   padding:1.6rem var(--pad);
-  display:flex;align-items:center;justify-content:space-between;
+  display:flex;align-items:center;justify-content:center;
   transform:translateY(-100%);
   animation:nav-in .6s 2.1s cubic-bezier(.16,1,.3,1) forwards;
 }
 nav::before { content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,8,9,.92),transparent);pointer-events:none; }
 @keyframes nav-in { to { transform:translateY(0); } }
-.n-logo { font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.08em;color:var(--pure);position:relative;z-index:1; }
+.n-logo { font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.08em;color:var(--pure);position:absolute;left:var(--pad);z-index:1; }
 .n-links { display:flex;gap:2.5rem;list-style:none;position:relative;z-index:1; }
 .n-links a { font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.15em;color:var(--mid);transition:color .2s; }
 .n-links a:hover { color:var(--pure); }
-.n-cta {
-  position:relative;z-index:1;
-  font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:500;
-  padding:.5rem 1.4rem;border:1px solid var(--seam2);border-radius:100px;color:var(--pure);
-  overflow:hidden;transition:color .3s,border-color .3s;
-}
-.n-cta span { position:relative;z-index:1; }
-.n-cta::before { content:'';position:absolute;inset:0;background:var(--pure);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.16,1,.3,1); }
-.n-cta:hover { color:var(--ink);border-color:var(--pure); }
-.n-cta:hover::before { transform:scaleX(1); }
-
 /* ════════════════ HERO ════════════════ */
 .hero {
   position:relative;height:100svh;min-height:620px;
@@ -264,7 +253,7 @@ nav::before { content:'';position:absolute;inset:0;background:linear-gradient(to
 }
 .hs-val {
   font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:600;
-  letter-spacing:.12em;text-transform:uppercase;color:var(--cream);
+  letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.82);
 }
 .hs-key {
   font-family:'JetBrains Mono',monospace;font-size:.60rem;
@@ -527,8 +516,8 @@ footer { padding:2.2rem var(--pad);display:flex;align-items:center;justify-conte
     <li><a href="#about">ABOUT</a></li>
     <li><a href="#services">SERVICES</a></li>
     <li><a href="#presence">JOURNAL</a></li>
+    <li><a href="#contact">CONTACT</a></li>
   </ul>
-  <a href="#contact" class="n-cta"><span>Contact</span></a>
 </nav>
 
 <!-- HERO -->
