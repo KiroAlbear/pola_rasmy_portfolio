@@ -187,11 +187,14 @@ nav::before { content:'';position:absolute;inset:0;background:linear-gradient(to
 /* Play */
 .hero-play-wrap {
   position:absolute;top:50%;left:50%;
-  transform:translate(-50%,-50%) scale(0);
-  display:flex;flex-direction:column;align-items:center;gap:14px;
+  transform:translate(-50%,-50%);
   width:max-content;
-  animation:pop .6s 1.5s cubic-bezier(.34,1.56,.64,1) forwards;
   z-index:3;
+}
+.hero-play-pop {
+  display:flex;flex-direction:column;align-items:center;gap:14px;
+  transform:scale(0);
+  animation:pop .6s 1.5s cubic-bezier(.34,1.56,.64,1) forwards;
 }
 .hero-play {
   position:relative;
@@ -219,7 +222,7 @@ nav::before { content:'';position:absolute;inset:0;background:linear-gradient(to
 }
 @keyframes ripple { 0%{transform:scale(1);opacity:.4}100%{transform:scale(1.9);opacity:0} }
 @keyframes reelSpin { to { transform:rotate(360deg); } }
-@keyframes pop    { to { transform:translate(-50%,-50%) scale(1); } }
+@keyframes pop    { from { transform:scale(0); } to { transform:scale(1); } }
 
 /* Stats panel */
 .hero-stats {
@@ -527,10 +530,12 @@ footer { padding:2.2rem var(--pad);display:flex;align-items:center;justify-conte
   </div>
 
   <div class="hero-play-wrap">
-    <a href="https://vimeo.com/894736178" target="_blank" class="hero-play" aria-label="Play reel">
-      <svg width="15" height="17" viewBox="0 0 15 17" fill="none"><path d="M1 1L14 8.5L1 16V1Z" fill="white" stroke="white" stroke-width="1.2" stroke-linejoin="round"/></svg>
-    </a>
-    <div class="hero-play-label">Play Reel</div>
+    <div class="hero-play-pop">
+      <a href="https://vimeo.com/894736178" target="_blank" class="hero-play" aria-label="Play reel">
+        <svg width="15" height="17" viewBox="0 0 15 17" fill="none"><path d="M1 1L14 8.5L1 16V1Z" fill="white" stroke="white" stroke-width="1.2" stroke-linejoin="round"/></svg>
+      </a>
+      <div class="hero-play-label">Play Reel</div>
+    </div>
   </div>
 
 
