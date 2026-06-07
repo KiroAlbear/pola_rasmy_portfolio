@@ -435,12 +435,14 @@ section { padding:clamp(5rem,10vw,9rem) var(--pad);border-bottom:1px solid var(-
   aspect-ratio:2/3;position:relative;overflow:hidden;
   background:
     linear-gradient(to bottom,rgba(8,8,9,.18),rgba(8,8,9,.42)),
-    url('work.png') center/cover no-repeat,
     var(--deep);
   transition:transform .5s cubic-bezier(.16,1,.3,1);
   scroll-snap-align:start;
 }
 .wc:hover { transform:scale(1.025);z-index:2; }
+.wc-img { position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.86) contrast(1.05);transition:transform .6s cubic-bezier(.16,1,.3,1);z-index:0; }
+.wc:hover .wc-img { transform:scale(1.04); }
+.wc::after { content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,8,9,.1),rgba(8,8,9,.24));pointer-events:none;z-index:1; }
 .wc:hover .wp { transform:translate(-50%,-50%) scale(1); }
 .wp { position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);width:50px;height:50px;border-radius:50%;border:1.5px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.07);backdrop-filter:blur(10px);transition:transform .35s cubic-bezier(.34,1.56,.64,1);z-index:2; }
 .wi { position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:1.4rem;background:linear-gradient(to top,rgba(8,8,9,.96) 0%,transparent 60%);opacity:1;transform:translateY(0);transition:opacity .3s,transform .3s cubic-bezier(.16,1,.3,1); }
@@ -685,15 +687,13 @@ footer { padding:2.2rem var(--pad);display:flex;align-items:center;justify-conte
     <p class="s-lbl rv no-dash">Selected Work</p>
   </div>
   <div class="work-grid rv d2">
-    <div class="wc" onclick="openLb('894736178')"><div class="wp"><svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="white"/></svg></div><div class="wi"><div class="wi-t">Shkoon Concert</div><div class="wi-s">Direction · Cinematography</div></div></div>
-    <div class="wc" onclick="openLb('937385349')"><div class="wp"><svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="white"/></svg></div><div class="wi"><div class="wi-t">Morshedy Group</div><div class="wi-s">Direction · Brand Film</div></div></div>
-    <div class="wc" onclick="openLb('1075681105')"><div class="wp"><svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="white"/></svg></div><div class="wi"><div class="wi-t">HAVAL H6 HEV</div><div class="wi-s">Direction · Brand Film</div></div></div>
-    <div class="wc" onclick="openLb('950585365')"><div class="wp"><svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="white"/></svg></div><div class="wi"><div class="wi-t">BEA Chill</div><div class="wi-s">Direction · Commercial</div></div></div>
-    <div class="wc" onclick="openLb('1151609417')"><div class="wp"><svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="white"/></svg></div><div class="wi"><div class="wi-t">Silk Road Journey</div><div class="wi-s">Direction · Documentary</div></div></div>
-    <div class="wc" onclick="openLb('1086692663')"><div class="wp"><svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="white"/></svg></div><div class="wi"><div class="wi-t">Golf 2025</div><div class="wi-s">Direction · Event Film</div></div></div>
-    <div class="wc" onclick="openLb('1086692663')"><div class="wp"><svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="white"/></svg></div><div class="wi"><div class="wi-t">Golf 2025</div><div class="wi-s">Direction · Event Film</div></div></div>
-    <div class="wc" onclick="openLb('1086692663')"><div class="wp"><svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="white"/></svg></div><div class="wi"><div class="wi-t">Golf 2025</div><div class="wi-s">Direction · Event Film</div></div></div>
-  
+    <div class="wc" onclick="openLb('894736178')"><img class="wc-img" src="shkoon.jpg" alt="Shkoon Concert thumbnail"><div class="wp"><svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="white"/></svg></div><div class="wi"><div class="wi-t">Shkoon Concert</div><div class="wi-s">Direction · Cinematography</div></div></div>
+    <div class="wc" onclick="openLb('937385349')"><img class="wc-img" src="morshedy.jpg" alt="Morshedy Group thumbnail"><div class="wp"><svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="white"/></svg></div><div class="wi"><div class="wi-t">Morshedy Group</div><div class="wi-s">Direction · Brand Film</div></div></div>
+    <div class="wc" onclick="openLb('1075681105')"><img class="wc-img" src="haval.jpg" alt="HAVAL H6 HEV thumbnail"><div class="wp"><svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="white"/></svg></div><div class="wi"><div class="wi-t">HAVAL H6 HEV</div><div class="wi-s">Direction · Brand Film</div></div></div>
+    <div class="wc" onclick="openLb('950585365')"><img class="wc-img" src="beachill.jpg" alt="BEA Chill thumbnail"><div class="wp"><svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="white"/></svg></div><div class="wi"><div class="wi-t">BEA Chill</div><div class="wi-s">Direction · Commercial</div></div></div>
+    <div class="wc" onclick="openLb('1086692663')"><img class="wc-img" src="golf.jpg" alt="Golf 2025 thumbnail"><div class="wp"><svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="white"/></svg></div><div class="wi"><div class="wi-t">Golf 2025</div><div class="wi-s">Direction · Event Film</div></div></div>
+    <div class="wc"><img class="wc-img" src="630泉州笔会.jpg" alt="630泉州笔会 thumbnail"><div class="wi"><div class="wi-t">630泉州笔会</div><div class="wi-s">Direction · Event Film</div></div></div>
+    <div class="wc"><img class="wc-img" src="6月19日-20日游览泉州.jpg" alt="6月19日-20日游览泉州 thumbnail"><div class="wi"><div class="wi-t">6月19日-20日游览泉州</div><div class="wi-s">Direction · Event Film</div></div></div>  
   </div>
 </section>
 
