@@ -430,6 +430,29 @@ section { padding:clamp(5rem,10vw,9rem) var(--pad);border-bottom:1px solid var(-
 }
 .work-grid::-webkit-scrollbar { height:2px; }
 .work-grid::-webkit-scrollbar-thumb { background:var(--gold); }
+.work-wrap { position:relative;margin-top:1.5rem; }
+.work-wrap .work-grid { margin-top:0; }
+.work-nav {
+  position:absolute;top:1px;bottom:1px;z-index:5;
+  width:clamp(54px,8vw,110px);
+  border:0;color:var(--cream);cursor:none;
+  display:flex;align-items:center;justify-content:center;
+  opacity:1;visibility:visible;
+  transition:opacity .25s,visibility .25s,background .25s;
+}
+.work-nav[hidden] { display:flex;opacity:0;visibility:hidden;pointer-events:none; }
+.work-nav.prev {
+  left:0;
+  background:linear-gradient(90deg,rgba(0,0,0,.74),rgba(0,0,0,0));
+}
+.work-nav.next {
+  right:0;
+  background:linear-gradient(270deg,rgba(0,0,0,.74),rgba(0,0,0,0));
+}
+.work-nav svg { width:22px;height:22px; }
+.work-nav.next svg { transform:scaleX(-1); }
+.work-nav.prev:hover { background:linear-gradient(90deg,rgba(0,0,0,.86),rgba(0,0,0,0)); }
+.work-nav.next:hover { background:linear-gradient(270deg,rgba(0,0,0,.86),rgba(0,0,0,0)); }
 .wc {
   flex:0 0 clamp(145px,23.5vw,300px);
   aspect-ratio:2/3;position:relative;overflow:hidden;
@@ -451,6 +474,7 @@ section { padding:clamp(5rem,10vw,9rem) var(--pad);border-bottom:1px solid var(-
 
 @media (max-width: 640px) {
   .wc { flex-basis:68vw; }
+  .work-nav { width:54px; }
 }
 
 /* ════════ ABOUT ════════ */
@@ -715,7 +739,9 @@ footer { padding:2.2rem var(--pad);display:flex;align-items:center;justify-conte
   <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:0;">
     <p class="s-lbl rv no-dash">Selected Work</p>
   </div>
-  <div class="work-grid rv d2">
+  <div class="work-wrap rv d2">
+    <button class="work-nav prev" type="button" aria-label="Previous work" data-work-dir="-1"><svg viewBox="0 0 24 24" fill="none"><path d="M15 5L8 12L15 19" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="work-grid">
     <div class="wc" onclick="openLb('894736178')"><img class="wc-img" src="shkoon.jpg" alt="Shkoon Concert thumbnail"><div class="wp"><svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="white"/></svg></div><div class="wi"><div class="wi-t">Shkoon Concert</div><div class="wi-s">Direction · Cinematography</div></div></div>
     <div class="wc" onclick="openLb('937385349')"><img class="wc-img" src="morshedy.jpg" alt="Morshedy Group thumbnail"><div class="wp"><svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="white"/></svg></div><div class="wi"><div class="wi-t">Morshedy Group</div><div class="wi-s">Direction · Brand Film</div></div></div>
     <div class="wc" onclick="openLb('1075681105')"><img class="wc-img" src="haval.jpg" alt="HAVAL H6 HEV thumbnail"><div class="wp"><svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="white"/></svg></div><div class="wi"><div class="wi-t">HAVAL H6 HEV</div><div class="wi-s">Direction · Brand Film</div></div></div>
@@ -723,6 +749,8 @@ footer { padding:2.2rem var(--pad);display:flex;align-items:center;justify-conte
     <div class="wc" onclick="openLb('1086692663')"><img class="wc-img" src="golf.jpg" alt="Golf 2025 thumbnail"><div class="wp"><svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="white"/></svg></div><div class="wi"><div class="wi-t">Golf 2025</div><div class="wi-s">Direction · Event Film</div></div></div>
     <div class="wc"><img class="wc-img" src="630泉州笔会.jpg" alt="630泉州笔会 thumbnail"><div class="wi"><div class="wi-t">630泉州笔会</div><div class="wi-s">Direction · Event Film</div></div></div>
     <div class="wc"><img class="wc-img" src="6月19日-20日游览泉州.jpg" alt="6月19日-20日游览泉州 thumbnail"><div class="wi"><div class="wi-t">6月19日-20日游览泉州</div><div class="wi-s">Direction · Event Film</div></div></div>  
+    </div>
+    <button class="work-nav next" type="button" aria-label="Next work" data-work-dir="1"><svg viewBox="0 0 24 24" fill="none"><path d="M15 5L8 12L15 19" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   </div>
 </section>
 
@@ -834,7 +862,7 @@ const cur=document.getElementById('cur'),cur2=document.getElementById('cur2');
 let mx=0,my=0,tx=0,ty=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
 (function a(){tx+=(mx-tx)*.13;ty+=(my-ty)*.13;cur2.style.left=tx+'px';cur2.style.top=ty+'px';requestAnimationFrame(a);})();
-document.querySelectorAll('a,button,.wc,.svc,.city,.c-link,.credit-right,.about-photo,.hero-play').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('h'));el.addEventListener('mouseleave',()=>document.body.classList.remove('h'));});
+document.querySelectorAll('a,button,.wc,.svc,.city,.c-link,.credit-right,.about-photo,.hero-play,.work-nav').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('h'));el.addEventListener('mouseleave',()=>document.body.classList.remove('h'));});
 
 let n=0;const li=setInterval(()=>{n=Math.min(n+Math.random()*14,100);if(n>=100){clearInterval(li);setTimeout(()=>{const ldr=document.getElementById('ldr');if(ldr)ldr.classList.add('out');},200);}},65);
 
@@ -845,6 +873,34 @@ document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
 
 const co=new IntersectionObserver(en=>{en.forEach(e=>{if(!e.isIntersecting)return;const el=e.target,t=+el.dataset.t;let c=0;const tm=setInterval(()=>{c=Math.min(c+t/30,t);el.textContent=Math.floor(c);if(c>=t)clearInterval(tm);},40);co.unobserve(el);});},{threshold:.6});
 document.querySelectorAll('.cnt').forEach(el=>co.observe(el));
+
+document.querySelectorAll('.work-wrap').forEach(wrap=>{
+  const grid=wrap.querySelector('.work-grid');
+  const prev=wrap.querySelector('.work-nav.prev');
+  const next=wrap.querySelector('.work-nav.next');
+  if(!grid||!prev||!next)return;
+  const step=()=>{
+    const card=grid.querySelector('.wc');
+    if(!card)return grid.clientWidth;
+    const gap=parseFloat(getComputedStyle(grid).columnGap)||0;
+    return card.getBoundingClientRect().width+gap;
+  };
+  const update=()=>{
+    const max=grid.scrollWidth-grid.clientWidth;
+    const hasOverflow=max>1;
+    prev.hidden=!hasOverflow||grid.scrollLeft<=1;
+    next.hidden=!hasOverflow||grid.scrollLeft>=max-1;
+  };
+  wrap.querySelectorAll('.work-nav').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      grid.scrollBy({left:step()*(+btn.dataset.workDir),behavior:'smooth'});
+    });
+  });
+  grid.addEventListener('scroll',update,{passive:true});
+  window.addEventListener('resize',update);
+  update();
+  requestAnimationFrame(update);
+});
 
 function openLb(id){document.getElementById('lb-iframe').src='https://player.vimeo.com/video/'+id+'?badge=0&autopause=0&autoplay=1&player_id=0&app_id=58479';document.getElementById('lb').classList.add('on');document.body.style.overflow='hidden';}
 function closeLb(){document.getElementById('lb').classList.remove('on');document.getElementById('lb-iframe').src='';document.body.style.overflow='';}
