@@ -610,6 +610,117 @@ section { padding:clamp(5rem,10vw,9rem) var(--pad);border-bottom:1px solid var(-
 .c-lbl { font-size:.9rem;font-weight:500;color:var(--cream);position:relative;z-index:1; }
 .c-val { font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.08em;color:var(--mid);position:relative;z-index:1;transition:color .25s; }
 
+/* DISCIPLINES + CONNECT */
+.disc-connect {
+  padding:0;
+  background:
+    radial-gradient(circle at 72% 45%,rgba(200,160,80,.08),transparent 26%),
+    linear-gradient(90deg,#070708,#0b0b0c 48%,#070708);
+  overflow:hidden;
+}
+.dc-grid {
+  min-height:clamp(340px,26vw,430px);
+  display:grid;
+  grid-template-columns:minmax(320px,.95fr) minmax(230px,.62fr) minmax(390px,1.45fr);
+  border-top:1px solid var(--seam);
+  border-bottom:1px solid var(--seam);
+}
+.dc-panel { position:relative;padding:clamp(1.8rem,3.4vw,3rem); }
+.dc-panel:first-child { padding-left:clamp(1.2rem,2vw,2rem);padding-right:clamp(1.2rem,2vw,2rem); }
+.dc-panel + .dc-panel { border-left:1px solid var(--seam); }
+.dc-panel::before {
+  content:'';position:absolute;left:0;right:0;top:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(200,160,80,.18),transparent);
+}
+.dc-label {
+  font-family:'JetBrains Mono',monospace;font-size:.62rem;font-weight:700;
+  letter-spacing:.32em;text-transform:uppercase;color:#8A6A3B;
+  margin-bottom:1.15rem;
+}
+.dc-list { border-top:1px solid rgba(255,255,255,.06); }
+.dc-item {
+  display:grid;grid-template-columns:38px 1fr auto;align-items:center;gap:.8rem;
+  min-height:48px;border-bottom:1px solid rgba(255,255,255,.06);
+  font-family:'JetBrains Mono',monospace;font-weight:700;text-transform:uppercase;
+  color:rgba(238,235,228,.72);letter-spacing:.18em;
+  transition:color .25s,padding-left .25s,background .25s;
+}
+.dc-item:hover { color:var(--cream);padding-left:.45rem;background:rgba(200,160,80,.035); }
+.dc-num { font-size:.66rem;color:rgba(238,235,228,.35); }
+.dc-title { font-size:clamp(.64rem,.82vw,.78rem);line-height:1.25; }
+.dc-plus { color:var(--gold);font-size:.92rem;font-weight:400; }
+.dc-still { display:flex;align-items:center;justify-content:center;padding:clamp(1.4rem,2.2vw,2rem); }
+.dc-card {
+  width:100%;height:100%;min-height:240px;position:relative;overflow:hidden;
+  border:1px solid rgba(200,160,80,.16);background:#0c0c0c;
+}
+.dc-card img {
+  width:100%;height:100%;object-fit:cover;object-position:center;
+  filter:sepia(.45) saturate(.55) brightness(.45) contrast(1.22);
+  transition:transform .7s cubic-bezier(.16,1,.3,1),filter .7s;
+}
+.dc-card:hover img { transform:scale(1.04);filter:sepia(.25) saturate(.72) brightness(.55) contrast(1.16); }
+.dc-card::after {
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(7,7,8,.5),transparent 45%,rgba(7,7,8,.38));
+  pointer-events:none;
+}
+.dc-connect {
+  display:flex;flex-direction:column;justify-content:center;
+  padding-right:var(--pad);
+  background:
+    linear-gradient(90deg,rgba(7,7,8,.98) 0%,rgba(7,7,8,.78) 38%,rgba(7,7,8,.24) 70%),
+    url("section1-image.png") right center / auto 118% no-repeat;
+}
+.dc-heading {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,3.8vw,4.4rem);
+  font-weight:300;line-height:.9;letter-spacing:-.02em;color:#e6dcc7;
+  max-width:500px;margin-bottom:1.6rem;
+}
+.dc-heading em { color:var(--gold);font-style:normal; }
+.dc-link {
+  display:flex;align-items:center;justify-content:space-between;gap:.9rem;
+  width:min(420px,100%);min-height:56px;
+  border:1px solid rgba(200,160,80,.2);background:rgba(8,8,9,.52);
+  padding:.78rem .82rem .78rem 1rem;transition:border-color .25s,background .25s;
+}
+.dc-link:hover { border-color:rgba(200,160,80,.48);background:rgba(14,13,12,.7); }
+.dc-link-text { display:flex;flex-direction:column;gap:.26rem;min-width:0; }
+.dc-link strong {
+  font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.18em;
+  color:var(--gold);text-transform:uppercase;
+}
+.dc-link span {
+  font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.08em;
+  color:rgba(238,235,228,.64);text-transform:uppercase;
+}
+.dc-arrow {
+  flex:0 0 44px;width:44px;height:44px;border-radius:50%;
+  display:grid;place-items:center;border:1px solid rgba(200,160,80,.38);
+  color:var(--cream);transition:transform .25s,border-color .25s,background .25s;
+}
+.dc-link:hover .dc-arrow { transform:translateX(4px);border-color:rgba(240,201,121,.7);background:rgba(200,160,80,.1); }
+.dc-arrow svg { width:15px;height:15px; }
+
+@media (max-width: 980px) {
+  .dc-grid { grid-template-columns:1fr; }
+  .dc-panel:first-child,
+  .dc-panel { padding-left:var(--pad);padding-right:var(--pad); }
+  .dc-panel:first-child { padding-left:clamp(.7rem,1vw,1.2rem);padding-right:clamp(.7rem,1vw,1.2rem); }
+  .dc-panel + .dc-panel { border-left:0;border-top:1px solid var(--seam); }
+  .dc-still { min-height:320px; }
+  .dc-connect { min-height:360px;background-size:100% auto;background-position:right bottom; }
+}
+
+@media (max-width: 560px) {
+  .dc-item { grid-template-columns:34px 1fr auto;letter-spacing:.12em; }
+  .dc-connect { min-height:420px;justify-content:flex-start;background-size:auto 100%; }
+  .dc-heading { font-size:2.55rem; }
+  .dc-link { align-items:flex-start; }
+  .dc-link span { font-size:.58rem; }
+}
+
 /* FOOTER */
 footer { padding:2.2rem var(--pad);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem; }
 .ft-l { font-family:'Bebas Neue',sans-serif;font-size:.95rem;letter-spacing:.1em;color:var(--cream); }
@@ -834,32 +945,37 @@ footer { padding:2.2rem var(--pad);display:flex;align-items:center;justify-conte
   </div>
 </section>
 
-<!-- SERVICES -->
-<section id="services">
-  <p class="s-lbl rv">Disciplines</p>
-  <h2 class="s-h rv d1">What I do.</h2>
-  <div class="svc-list rv d2">
-    <div class="svc"><div class="sv-n">01</div><div><div class="sv-t">Cinematic Brand Films</div><div class="sv-d">Direction, production, and post. Luxury, automotive, corporate.</div></div><div class="sv-a">+</div></div>
-    <div class="svc"><div class="sv-n">02</div><div><div class="sv-t">International Production</div><div class="sv-d">Cross-border content for Egypt, China, Canada, and MENA.</div></div><div class="sv-a">+</div></div>
-    <div class="svc"><div class="sv-n">03</div><div><div class="sv-t">Creative Direction</div><div class="sv-d">Visual strategy, art direction, and brand identity through film.</div></div><div class="sv-a">+</div></div>
-    <div class="svc"><div class="sv-n">04</div><div><div class="sv-t">Media PR & Editorial Campaigns</div><div class="sv-d">PR management, media relations, cinematic content strategy.</div></div><div class="sv-a">+</div></div>
-    <div class="svc"><div class="sv-n">05</div><div><div class="sv-t">Luxury Event Documentation</div><div class="sv-d">Fashion shows, galas, multi-camera live events, editorial coverage.</div></div><div class="sv-a">+</div></div>
-  </div>
-</section>
 
-<!-- CONTACT -->
-<section id="contact">
-  <p class="s-lbl rv">Let's Connect</p>
-  <div class="contact-grid">
-    <h2 class="contact-h rv d1">LET'S BUILD<br>SOMETHING<br><em>UNFORGETTABLE.</em></h2>
-    <div class="c-links rv d2">
-      <a href="mailto:pola@polarasmy.com" class="c-link"><span class="c-lbl">Direct Contact</span><span class="c-val">pola@polarasmy.com</span></a>
-      <a href="https://instagram.com/polarasmy" class="c-link" target="_blank"><span class="c-lbl">Instagram</span><span class="c-val">@polarasmy</span></a>
-      <a href="https://vimeo.com/polarasmy" class="c-link" target="_blank"><span class="c-lbl">Vimeo</span><span class="c-val">vimeo.com/polarasmy</span></a>
-      <a href="#" class="c-link"><span class="c-lbl">Available</span><span class="c-val">Cairo · Worldwide</span></a>
+<!-- DISCIPLINES + CONNECT -->
+<section id="services" class="disc-connect">
+  <div class="dc-grid">
+    <div class="dc-panel rv">
+      <p class="dc-label">Disciplines</p>
+      <div class="dc-list" aria-label="Disciplines">
+        <a class="dc-item" href="#work"><span class="dc-num">01</span><span class="dc-title">Cinematic Brand Films</span><span class="dc-plus">+</span></a>
+        <a class="dc-item" href="#presence"><span class="dc-num">02</span><span class="dc-title">International Production</span><span class="dc-plus">+</span></a>
+        <a class="dc-item" href="#about"><span class="dc-num">03</span><span class="dc-title">Creative Direction</span><span class="dc-plus">+</span></a>
+        <a class="dc-item" href="#work"><span class="dc-num">04</span><span class="dc-title">Editorial Campaigns</span><span class="dc-plus">+</span></a>
+        <a class="dc-item" href="#presence"><span class="dc-num">05</span><span class="dc-title">Luxury Event Documentation</span><span class="dc-plus">+</span></a>
+        <a class="dc-item" href="#about"><span class="dc-num">06</span><span class="dc-title">Visual Strategy</span><span class="dc-plus">+</span></a>
+      </div>
+    </div>
+    <div class="dc-panel dc-still rv d1">
+      <div class="dc-card">
+        <img src="section1-image.png" alt="Production still on set">
+      </div>
+    </div>
+    <div id="contact" class="dc-panel dc-connect rv d2">
+      <p class="dc-label">Let's Connect</p>
+      <h2 class="dc-heading">LET'S BUILD<br>SOMETHING<br><em>UNFORGETTABLE.</em></h2>
+      <a href="mailto:pola@polarasmy.com" class="dc-link">
+        <span class="dc-link-text"><strong>Direct Contact</strong><span>pola@polarasmy.com</span></span>
+        <span class="dc-arrow" aria-hidden="true"><svg viewBox="0 0 13 13" fill="none"><path d="M2.2 6.5H10.4M7.2 3.3L10.4 6.5L7.2 9.7" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
     </div>
   </div>
 </section>
+
 
 <footer>
   <div class="ft-l">POLA RASMY</div>
@@ -880,7 +996,7 @@ const cur=document.getElementById('cur'),cur2=document.getElementById('cur2');
 let mx=0,my=0,tx=0,ty=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
 (function a(){tx+=(mx-tx)*.13;ty+=(my-ty)*.13;cur2.style.left=tx+'px';cur2.style.top=ty+'px';requestAnimationFrame(a);})();
-document.querySelectorAll('a,button,.wc,.svc,.city,.c-link,.credit-right,.about-photo,.hero-play,.work-nav').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('h'));el.addEventListener('mouseleave',()=>document.body.classList.remove('h'));});
+document.querySelectorAll('a,button,.wc,.svc,.city,.c-link,.dc-item,.dc-card,.dc-link,.credit-right,.about-photo,.hero-play,.work-nav').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('h'));el.addEventListener('mouseleave',()=>document.body.classList.remove('h'));});
 
 let n=0;const li=setInterval(()=>{n=Math.min(n+Math.random()*14,100);if(n>=100){clearInterval(li);setTimeout(()=>{const ldr=document.getElementById('ldr');if(ldr)ldr.classList.add('out');},200);}},65);
 
