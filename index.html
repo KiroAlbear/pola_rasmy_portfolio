@@ -625,7 +625,7 @@ section { padding:clamp(5rem,10vw,9rem) var(--pad);border-bottom:1px solid var(-
   border-top:1px solid var(--seam);
   border-bottom:1px solid var(--seam);
 }
-.dc-panel { position:relative;padding:clamp(1.8rem,3.4vw,3rem); }
+.dc-panel { position:relative;padding:clamp(1.8rem,3.4vw,2rem); }
 .dc-panel:first-child { padding-left:clamp(1.2rem,2vw,2rem);padding-right:clamp(1.2rem,2vw,2rem); }
 .dc-panel + .dc-panel { border-left:1px solid var(--seam); }
 .dc-panel::before {
@@ -637,6 +637,7 @@ section { padding:clamp(5rem,10vw,9rem) var(--pad);border-bottom:1px solid var(-
   letter-spacing:.32em;text-transform:uppercase;color:#8A6A3B;
   margin-bottom:1.15rem;
 }
+.dc-connect .dc-label { margin-bottom:2rem; }
 .dc-list { border-top:1px solid rgba(255,255,255,.06); }
 .dc-item {
   display:grid;grid-template-columns:38px 1fr auto;align-items:center;gap:.8rem;
@@ -666,7 +667,7 @@ section { padding:clamp(5rem,10vw,9rem) var(--pad);border-bottom:1px solid var(-
   pointer-events:none;
 }
 .dc-connect {
-  display:flex;flex-direction:column;justify-content:center;
+  display:flex;flex-direction:column;justify-content:flex-start;
   padding-right:var(--pad);
   background:
     linear-gradient(90deg,rgba(7,7,8,.98) 0%,rgba(7,7,8,.78) 38%,rgba(7,7,8,.24) 70%),
@@ -674,7 +675,7 @@ section { padding:clamp(5rem,10vw,9rem) var(--pad);border-bottom:1px solid var(-
 }
 .dc-heading {
   font-family:'Cormorant Garamond',serif;
-  font-size:clamp(2rem,3.8vw,4.4rem);
+  font-size:clamp(2rem,3.8vw,2.4rem);
   font-weight:300;line-height:.9;letter-spacing:-.02em;color:#e6dcc7;
   max-width:500px;margin-bottom:1.6rem;
 }
