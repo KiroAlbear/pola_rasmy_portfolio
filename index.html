@@ -544,8 +544,14 @@ section { padding:clamp(5rem,10vw,9rem) var(--pad);border-bottom:1px solid var(-
 .city-overlay {
   position:absolute;inset:0;
   background:
-    linear-gradient(90deg,rgba(6,7,8,.78) 0%,rgba(6,7,8,.28) 48%,rgba(6,7,8,.72) 100%),
-    linear-gradient(to top,rgba(6,7,8,.72) 0%,rgba(6,7,8,.1) 56%,rgba(6,7,8,.62) 100%);
+    linear-gradient(90deg,rgba(6,7,8,.34) 0%,rgba(6,7,8,.08) 48%,rgba(6,7,8,.3) 100%),
+    linear-gradient(to top,rgba(6,7,8,.32) 0%,rgba(6,7,8,.03) 56%,rgba(6,7,8,.28) 100%);
+  transition:background .7s cubic-bezier(.16,1,.3,1);
+}
+.city:hover .city-overlay {
+  background:
+    linear-gradient(90deg,rgba(6,7,8,.52) 0%,rgba(6,7,8,.16) 48%,rgba(6,7,8,.48) 100%),
+    linear-gradient(to top,rgba(6,7,8,.48) 0%,rgba(6,7,8,.06) 56%,rgba(6,7,8,.42) 100%);
 }
 .city::after { content:'';position:absolute;inset:0;background:radial-gradient(circle at 46% 60%,rgba(240,201,121,.12),transparent 30%);opacity:.55;pointer-events:none; }
 .city-content { position:absolute;inset:0;padding:2.4rem 2rem;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;z-index:1; }
@@ -866,7 +872,7 @@ footer { padding:2.2rem var(--pad);display:flex;align-items:center;justify-conte
       </a>
     </div>
     <div class="credit-right">
-      <img src="fountain.png" alt="Fountain of Youth - Apple TV+">
+      <img src="fountainofyouth.jpeg" alt="Fountain of Youth - Apple TV+">
       <div class="credit-right-overlay"></div>
     </div>
   </div>
@@ -885,8 +891,8 @@ footer { padding:2.2rem var(--pad);display:flex;align-items:center;justify-conte
     <div class="wc" onclick="openLb('1075681105')"><img class="wc-img" src="haval.jpg" alt="HAVAL H6 HEV thumbnail"><div class="wp"><svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="white"/></svg></div><div class="wi"><div class="wi-t">HAVAL H6 HEV</div><div class="wi-s">Direction · Brand Film</div></div></div>
     <div class="wc" onclick="openLb('950585365')"><img class="wc-img" src="beachill.jpg" alt="BEA Chill thumbnail"><div class="wp"><svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="white"/></svg></div><div class="wi"><div class="wi-t">BEA Chill</div><div class="wi-s">Direction · Commercial</div></div></div>
     <div class="wc" onclick="openLb('1086692663')"><img class="wc-img" src="golf.jpg" alt="Golf 2025 thumbnail"><div class="wp"><svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="white"/></svg></div><div class="wi"><div class="wi-t">Golf 2025</div><div class="wi-s">Direction · Event Film</div></div></div>
-    <div class="wc"><img class="wc-img" src="630泉州笔会.jpg" alt="630泉州笔会 thumbnail"><div class="wi"><div class="wi-t">630泉州笔会</div><div class="wi-s">Direction · Event Film</div></div></div>
-    <div class="wc"><img class="wc-img" src="6月19日-20日游览泉州.jpg" alt="6月19日-20日游览泉州 thumbnail"><div class="wi"><div class="wi-t">6月19日-20日游览泉州</div><div class="wi-s">Direction · Event Film</div></div></div>  
+    <div class="wc" onclick="openLb('1151610689')"><img class="wc-img" src="630泉州笔会.jpg" alt="630泉州笔会 thumbnail"><div class="wp"><svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="white"/></svg></div><div class="wi"><div class="wi-t">630泉州笔会</div><div class="wi-s">Direction · Event Film</div></div></div>
+    <div class="wc" onclick="openLb('1151608525')"><img class="wc-img" src="6月19日-20日游览泉州.jpg" alt="6月19日-20日游览泉州 thumbnail"><div class="wp"><svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" fill="white"/></svg></div><div class="wi"><div class="wi-t">6月19日-20日游览泉州</div><div class="wi-s">Direction · Event Film</div></div></div>  
     </div>
     <button class="work-nav next" type="button" aria-label="Next work" data-work-dir="1"><svg viewBox="0 0 24 24" fill="none"><path d="M15 5L8 12L15 19" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   </div>
@@ -905,7 +911,7 @@ footer { padding:2.2rem var(--pad);display:flex;align-items:center;justify-conte
       </div>
     </div>
     <div class="about-photo rv d2">
-      <img src="fountain.png" alt="Pola Rasmy, Filmmaker">
+      <img src="about.jpeg" alt="Pola Rasmy, Filmmaker">
     </div>
     <div class="about-stats rv d3">
       <div class="a-stat"><div class="a-num"><span class="cnt" data-t="7">0</span><mark>+</mark></div><div class="a-lbl">YEARS EXPERIENCE</div></div>
@@ -921,7 +927,7 @@ footer { padding:2.2rem var(--pad);display:flex;align-items:center;justify-conte
   <p class="s-lbl rv no-dash">Global Presence</p>
   <div class="cities-grid rv d2">
     <div class="city">
-      <img src="fountain.png" alt="Cairo, Egypt">
+      <img src="cairo.jpeg" alt="Cairo, Egypt">
       <div class="city-overlay"></div>
       <div class="city-content">
         <div>
@@ -932,7 +938,7 @@ footer { padding:2.2rem var(--pad);display:flex;align-items:center;justify-conte
       </div>
     </div>
     <div class="city">
-      <img src="fountain.png" alt="Shanghai, China">
+      <img src="shangai.jpeg" alt="Shanghai, China">
       <div class="city-overlay"></div>
       <div class="city-content">
         <div>
@@ -943,7 +949,7 @@ footer { padding:2.2rem var(--pad);display:flex;align-items:center;justify-conte
       </div>
     </div>
     <div class="city">
-      <img src="fountain.png" alt="Toronto, Canada">
+      <img src="toronto.jpeg" alt="Toronto, Canada">
       <div class="city-overlay"></div>
       <div class="city-content">
         <div>
