@@ -302,7 +302,30 @@ nav::before { content:'';position:absolute;inset:0;background:linear-gradient(to
 }
 
 @media (max-width: 640px) {
+  /* Stack hero children vertically so they never overlap */
+  .hero {
+    height:auto;min-height:100svh;
+    display:flex;flex-direction:column;justify-content:space-between;
+    gap:2rem;
+    padding:6.5rem var(--pad) 3rem !important;
+  }
   .hero-scroll { display:none; }
+  .hero-stats {
+    position:static;order:1;align-self:flex-end;
+    top:auto;right:auto;bottom:auto;left:auto;transform:none;
+    width:auto;max-width:min(230px,72vw);
+    margin:0;gap:1.4rem;padding-left:1.8rem;
+  }
+  .hero-play-wrap {
+    position:static;order:2;align-self:center;
+    top:auto;left:auto;transform:none;
+    width:max-content;
+  }
+  .hero-text {
+    position:static;order:3;
+    bottom:auto;left:auto;right:auto;
+    padding:0;
+  }
 }
 
 /* TICKER */
